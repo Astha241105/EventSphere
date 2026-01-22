@@ -1,0 +1,92 @@
+.auth-illustration-bg {
+  width: 50%;
+  min-height: 100vh;
+  background: url("../assets/back.svg") center/cover no-repeat;
+  position: relative;
+}
+
+/* Dark gradient overlay */
+.auth-illustration-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.6),
+    rgba(15, 23, 42, 0.9)
+  );
+}
+
+/* Overlay wrapper */
+.auth-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 60px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Brand */
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.brand-icon {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px;
+  border-radius: 10px;
+}
+
+/* Content */
+.auth-content {
+  margin-top: auto;
+  max-width: 480px;
+}
+
+.auth-content h1 {
+  font-size: 44px;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.auth-content p {
+  opacity: 0.9;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+/* Stats */
+.auth-stats {
+  display: flex;
+  gap: 20px;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 16px 22px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+}
+
+.stat-box h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.stat-box span {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .auth-illustration-bg {
+    display: none;
+  }
+}
