@@ -1,85 +1,90 @@
-import "./signup.css"
+import "./signup.css";
+import AuthIllustrationBg from "./background";
+
 function SignUp() {
   return (
-     <div className="signup-container">
-      
-      {/* LEFT SECTION */}
-      <div className="signup-left">
-        <div className="brand">
-          <span className="logo">📅</span>
-          <span className="brand-name">Evently</span>
-        </div>
+    <div className="signup-container">
 
-        <h1>
-          Connect with the <br />
-          world's best <br />
-          professional <br />
-          community.
-        </h1>
+      {/* LEFT BACKGROUND */}
+      <AuthIllustrationBg />
 
-        <p>
-          Manage events, build networks, and grow your professional
-          presence with our all-in-one platform.
-        </p>
-
-        <div className="stats">
-          <div className="stat-card">
-            <h3>10k+</h3>
-            <span>Active Events</span>
-          </div>
-          <div className="stat-card">
-            <h3>500k+</h3>
-            <span>Community Members</span>
-          </div>
-        </div>
-      </div>
-
-      {/* RIGHT SECTION */}
+      {/* RIGHT SIDE */}
       <div className="signup-right">
-        <div className="top-link">
-          Already have an account? <a href="#">Log in</a>
-        </div>
 
-        <h2>Create Your Account</h2>
-        <p className="subtitle">
-          Join our platform to start managing or attending events today.
-        </p>
+        <div className="signup-card">
 
-        <div className="roles">
-          <button className="role active">Participant</button>
-          <button className="role">Host</button>
-          <button className="role">Admin</button>
-        </div>
-
-        <form className="signup-form">
-          <label>Full Name</label>
-          <input type="text" placeholder="Enter your full name" />
-
-          <label>Email Address</label>
-          <input type="email" placeholder="name@example.com" />
-
-          <label>Password</label>
-          <input type="password" placeholder="Create a password" />
-
-          <label>Confirm Password</label>
-          <input type="password" placeholder="Repeat your password" />
-
-          <div className="terms">
-            <input type="checkbox" />
-            <span>
-              I agree to the <a href="#">Terms & Conditions</a> and{" "}
-              <a href="#">Privacy Policy</a>
-            </span>
+          <div className="card-header">
+            <span className="back">←</span>
+            <h3>Create Your Account</h3>
           </div>
 
-          <button className="submit-btn">
-            Create Account →
-          </button>
-        </form>
+          <div className="icon-box">📅</div>
+
+          <h2>Join Evently</h2>
+          <p className="subtitle">
+            Start managing and attending world-class events
+          </p>
+
+          {/* ROLE SELECT */}
+          <div className="role-section">
+
+            <label>Choose your role</label>
+            <p className="role-sub">
+              Select how you want to use the platform
+            </p>
+
+            <div className="roles">
+              <button className="role active">👤 Participant</button>
+              <button className="role">🎤 Host</button>
+              <button className="role">🛠 Admin</button>
+            </div>
+
+          </div>
+
+          <form className="signup-form">
+
+            <label>Full Name</label>
+            <input type="text" placeholder="John Doe" />
+
+            <label>Email Address</label>
+            <input type="email" placeholder="name@example.com" />
+
+            <label>Password</label>
+            <div className="password-field">
+              <input type="password" placeholder="••••••••••••" />
+              <span className="eye">👁</span>
+            </div>
+
+            <div className="password-strength">
+              <span>STRONG PASSWORD</span>
+              <div className="strength-bar">
+                <div></div>
+              </div>
+            </div>
+
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Repeat your password" />
+
+            <div className="terms">
+              <input type="checkbox" defaultChecked />
+              <span>
+                I agree to the <a href="#">Terms & Conditions</a> and{" "}
+                <a href="#">Privacy Policy</a>
+              </span>
+            </div>
+
+            <button className="submit-btn">
+              Create Account →
+            </button>
+
+          </form>
+
+        </div>
+
       </div>
+
     </div>
   );
-  
 }
 
-export default SignUp
+export default SignUp;

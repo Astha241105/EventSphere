@@ -1,73 +1,71 @@
+import React from "react";
+import AuthIllustrationBg from "./background";
 import "./login.css";
 
-function Login() {
+const LoginForm = () => {
   return (
     <div className="login-container">
 
-      {/* LEFT SECTION */}
-      <div className="login-left">
-        <div className="overlay">
-          <h1>Host unforgettable moments.</h1>
-          <p>
-            Manage your events, network with professionals,
-            and scale your reach with our all-in-one platform.
-          </p>
-        </div>
-      </div>
+      <AuthIllustrationBg />
 
-      {/* RIGHT SECTION */}
-      <div className="login-right">
-        <div className="login-box">
+      <div className="right-container">
 
-          <div className="logo">ava</div>
+        <div className="login-card">
 
           <h2>Welcome Back</h2>
+
           <p className="subtitle">
-            Log in to your account to continue.
+            Log in to your account to manage your events.
           </p>
 
-          <button className="social-btn google">
-            Continue with Google
-          </button>
+          <form>
 
-          <button className="social-btn facebook">
-            Continue with Facebook
-          </button>
-
-          <div className="divider">
-            <span>OR EMAIL</span>
-          </div>
-
-          <form className="login-form">
             <label>Email Address</label>
-            <input type="email" placeholder="name@example.com" />
+
+            <div className="input-box">
+              <span className="icon">✉</span>
+              <input type="email" placeholder="alex@techcompany.com" />
+            </div>
 
             <div className="password-row">
               <label>Password</label>
-              <a href="#">Forgot Password?</a>
+              <span className="forgot">Forgot Password?</span>
             </div>
 
-            <input type="password" placeholder="••••••••" />
+            <div className="input-box">
+              <span className="icon">🔒</span>
+              <input type="password" placeholder="••••••••" />
+              <span className="eye">👁</span>
+            </div>
 
             <div className="remember">
               <input type="checkbox" />
               <span>Remember me for 30 days</span>
             </div>
 
-            <button className="login-btn">
-              Log In
-            </button>
+            <button className="login-btn">Log In</button>
+
           </form>
 
-          <p className="signup-text">
-            Don’t have an account? <a href="#">Sign up for free</a>
+          <div className="divider">
+            <span>Or continue with</span>
+          </div>
+
+          <div className="social-login">
+            <button className="social-btn">Google</button>
+            <button className="social-btn">GitHub</button>
+          </div>
+
+          <p className="signup">
+            Don’t have an account? <span>Sign up for free</span>
           </p>
 
         </div>
+
       </div>
 
     </div>
   );
-}
+};
 
-export default Login;
+export default LoginForm;
