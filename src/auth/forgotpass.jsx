@@ -20,11 +20,11 @@ function ResetPassword() {
 
           {/* Illustration */}
           <div className="reset-illustration">
-            <img
-              src="/reset-illustration.png"
-              alt="Reset password"
-            />
-          </div>
+  <div
+    className="thinking-illustration"
+    data-alt="Illustration of a person thinking calmly"
+  ></div>
+</div>
 
           {/* Text */}
           <h2>Forgot Your Password?</h2>

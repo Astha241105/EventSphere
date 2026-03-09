@@ -25,8 +25,7 @@ function VerifyCode() {
           <h2>Enter Verification Code</h2>
 
           <p className="subtitle">
-            We've sent a 6-digit code to your registered email and mobile
-            device ending in <b>8892</b>
+            We've sent a 6-digit code to your registered email
           </p>
 
           {/* OTP INPUTS */}
@@ -48,15 +47,6 @@ function VerifyCode() {
           <button className="verify-btn">
             Verify & Continue
           </button>
-
-          <p className="policy">
-            By continuing, you agree to our security protocols and role-based
-            access control policies.
-          </p>
-
-          <div className="divider">
-            SECURE RBAC AUTHENTICATION
-          </div>
 
         </div>
 

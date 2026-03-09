@@ -1,6 +1,8 @@
 import React from "react";
 import "./background.css";
 import bg from "../assets/back.svg";
+import eventSphere from "../assets/eventSphere.svg";
+import logo from "../assets/logo.svg";
 
 const Background = () => {
   return (
@@ -11,29 +13,17 @@ const Background = () => {
       <div className="overlay">
 
         <div className="brand">
-          <div className="logo"></div>
-          <span>EventSphere</span>
+          <img src={logo} className="logo-image"/>
+          <img src={eventSphere} className="eventSphere-image"/>
         </div>
 
         <div className="hero">
-          <h1>Master Your Next Tech Gathering</h1>
+          <h1>“Discover and Host the Future of Tech Events.”</h1>
 
           <p>
-            The all-in-one platform for developers and organizers to create
-            world-class technical conferences and hackathons.
+            Join hackathons, workshops, and competitions. Connect with innovators and build something amazing.
           </p>
         </div>
-
-        <div className="users">
-          <div className="avatars">
-            <img src="https://i.pravatar.cc/40?img=1"/>
-            <img src="https://i.pravatar.cc/40?img=2"/>
-            <img src="https://i.pravatar.cc/40?img=3"/>
-          </div>
-
-          <p>Joined by 10k+ organizers worldwide</p>
-        </div>
-
       </div>
 
     </div>

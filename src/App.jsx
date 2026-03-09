@@ -6,11 +6,10 @@ import ResetPassword from "./auth/forgotpass.jsx"
 function App() {
   return (
     <>
-    {/* <Signup></Signup> */}
-    {/* <Login></Login> */}
-    {/* <AuthIllustrationBg></AuthIllustrationBg> */}
+    <Signup></Signup>
+    <Login></Login>
     <ResetPassword />
-      {/* <VerifyCode /> */}
+      <VerifyCode />
     </>
   )
 }

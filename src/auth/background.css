@@ -45,16 +45,18 @@
   display:flex;
   align-items:center;
   gap:12px;
-  margin-bottom:120px;
+  margin-bottom:100px;
 }
 
-.logo{
-  width:32px;
-  height:32px;
-  background:white;
+.logo-image{
+  width:100px;
+  height:100px;
+  /* background:white; */
   border-radius:8px;
+}.eventSphere-image{
+  width:300px;
+  height:100px;
 }
-
 /* hero */
 
 .hero{

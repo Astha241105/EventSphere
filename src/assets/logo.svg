@@ -1,0 +1,31 @@
+<svg width="180" height="180" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f4f8a"/>
+      <stop offset="100%" stop-color="#66b3ff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#blueGrad)" stroke-width="10"/>
+
+  <!-- Middle circle -->
+  <circle cx="100" cy="100" r="60" fill="none" stroke="url(#blueGrad)" stroke-width="8"/>
+
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="35" fill="none" stroke="url(#blueGrad)" stroke-width="6"/>
+
+  <!-- Letter e -->
+  <text 
+    x="100" 
+    y="120" 
+    text-anchor="middle" 
+    font-size="80" 
+    font-family="Poppins, Arial, sans-serif"
+    font-weight="600"
+    fill="url(#blueGrad)">
+    e
+  </text>
+
+</svg>

@@ -1,0 +1,25 @@
+<svg width="420" height="120" viewBox="0 0 420 120" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- event -->
+  <text 
+    x="10" 
+    y="75"
+    font-size="60"
+    font-family="Poppins, Arial, sans-serif"
+    font-weight="600"
+    fill="#1773d6">
+    event
+  </text>
+
+  <!-- Sphere -->
+  <text 
+    x="170" 
+    y="75"
+    font-size="60"
+    font-family="Poppins, Arial, sans-serif"
+    font-weight="600"
+    fill="#5da9e9">
+    Sphere
+  </text>
+
+</svg>

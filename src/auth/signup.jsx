@@ -14,16 +14,8 @@ function SignUp() {
         <div className="signup-card">
 
           <div className="card-header">
-            <span className="back">←</span>
-            <h3>Create Your Account</h3>
+            <h3 className="card-title">Create Your Account</h3>
           </div>
-
-          <div className="icon-box">📅</div>
-
-          <h2>Join Evently</h2>
-          <p className="subtitle">
-            Start managing and attending world-class events
-          </p>
 
           {/* ROLE SELECT */}
           <div className="role-section">
@@ -55,24 +47,8 @@ function SignUp() {
               <span className="eye">👁</span>
             </div>
 
-            <div className="password-strength">
-              <span>STRONG PASSWORD</span>
-              <div className="strength-bar">
-                <div></div>
-              </div>
-            </div>
-
             <label>Confirm Password</label>
             <input type="password" placeholder="Repeat your password" />
-
-            <div className="terms">
-              <input type="checkbox" defaultChecked />
-              <span>
-                I agree to the <a href="#">Terms & Conditions</a> and{" "}
-                <a href="#">Privacy Policy</a>
-              </span>
-            </div>
-
             <button className="submit-btn">
               Create Account →
             </button>

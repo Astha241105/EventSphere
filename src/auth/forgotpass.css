@@ -17,6 +17,7 @@
   background: #f8fafc;
 }
 
+
 .reset-card {
   width: 360px;
   background: white;
@@ -43,17 +44,23 @@
 }
 
 /* ILLUSTRATION */
-.reset-illustration {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
+.reset-illustration{
+  display:flex;
+  justify-content:center;
+  margin-bottom:20px;
 }
 
-.reset-illustration img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
+.thinking-illustration{
+  width:140px;
+  height:140px;
+
+  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAkMIyBOW8oufnMp13mOPJLVZcf3geMEgXCzDyzYOnKhCEhQs52VzuO9Q8uilmsvt9Ye_6AIRBsWGVVL0lG3bayVeNQ47h-4-ERVqLSdB3o9lEyeMSpqmHxVxjtOpMdyxTifRIqKFy-UgPjhMiSYdMIzog2DYMOP4RwtB1-EAnLxwN1MVFqcUXa8ar715K2bLXch0968iCWktjJkLYmGIpb1jIPQf1rXQTexcCW4KTUwBMw0-UBWrRh-oI_s0KWapz0nPb6iqZH9A22");
+
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:contain;
+
+  border-radius:50%;
 }
 
 /* TEXT */
