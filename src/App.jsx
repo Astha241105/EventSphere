@@ -4,6 +4,7 @@ import VerifyCode from "./auth/otpverification.jsx";
 import Signup from "./auth/signup.jsx";
 import ResetPassword from "./auth/forgotpass.jsx";
 import Profile from "./auth/profile.jsx";
+import Home from "./dashboard/home.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/forgot-password" element={<ResetPassword />} />
       <Route path="/otp" element={<VerifyCode />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/dashboard" element={<Home />} />
 
     </Routes>
   );
