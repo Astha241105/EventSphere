@@ -5,6 +5,7 @@ import Signup from "./auth/signup.jsx";
 import ResetPassword from "./auth/forgotpass.jsx";
 import Profile from "./auth/profile.jsx";
 import Home from "./dashboard/home.jsx";
+import EventCreation from "./createevent/create.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/otp" element={<VerifyCode />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/dashboard" element={<Home />} />
+      <Route path="/create" element={<EventCreation />} />
 
     </Routes>
   );

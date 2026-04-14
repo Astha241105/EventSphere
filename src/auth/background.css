@@ -59,17 +59,17 @@
 }
 /* hero */
 
-.hero{
+.hero1{
   margin-bottom:120px;
 }
 
-.hero h1{
+.hero1 h1{
   font-size:48px;
   line-height:1.1;
   margin-bottom:20px;
 }
 
-.hero p{
+.hero1 p{
   color:#cbd5f5;
 }
 

@@ -103,13 +103,6 @@ function VerifyCode() {
       <div className="verify-right">
         <div className="verify-card">
 
-          <div className="card-header">
-            <span className="back" onClick={() => navigate("/signup")}>←</span>
-            <span>Security Check</span>
-          </div>
-
-          <div className="shield-icon">🛡</div>
-
           <h2>Enter Verification Code</h2>
 
           <p className="subtitle">

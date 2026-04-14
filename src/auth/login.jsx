@@ -1,8 +1,10 @@
 import React from "react";
 import AuthIllustrationBg from "./background";
 import "./login.css";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   return (
     <div className="login-container">
 
@@ -12,7 +14,7 @@ const LoginForm = () => {
 
         <div className="login-card">
 
-          <h2>Welcome Back</h2>
+          <h2 >Welcome Back</h2>
 
           <p className="subtitle">
             Log in to your account to manage your events.
@@ -24,40 +26,28 @@ const LoginForm = () => {
 
             <div className="input-box">
               <span className="icon">✉</span>
-              <input type="email" placeholder="alex@techcompany.com" />
+              <input type="email" />
             </div>
 
             <div className="password-row">
               <label>Password</label>
-              <span className="forgot">Forgot Password?</span>
+              <span className="forgot" onClick={() => navigate("/forgot-password")}>
+                Forgot Password?
+              </span>
             </div>
 
             <div className="input-box">
               <span className="icon">🔒</span>
               <input type="password" placeholder="••••••••" />
-              <span className="eye">👁</span>
-            </div>
-
-            <div className="remember">
-              <input type="checkbox" />
-              <span>Remember me for 30 days</span>
+              <span className="eye1">👁</span>
             </div>
 
             <button className="login-btn">Log In</button>
 
           </form>
 
-          <div className="divider">
-            <span>Or continue with</span>
-          </div>
-
-          <div className="social-login">
-            <button className="social-btn">Google</button>
-            <button className="social-btn">GitHub</button>
-          </div>
-
           <p className="signup">
-            Don’t have an account? <span>Sign up for free</span>
+            Don’t have an account? <span onClick={() => navigate("/signup")}>Sign up for free</span>
           </p>
 
         </div>

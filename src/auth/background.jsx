@@ -17,11 +17,11 @@ const Background = () => {
           <img src={eventSphere} className="eventSphere-image"/>
         </div>
 
-        <div className="hero">
+        <div className="hero1">
           <h1>“Discover and Host the Future of Tech Events.”</h1>
 
           <p>
-            Join hackathons, workshops, and competitions. Connect with innovators and build something amazing.
+            Join hackathons, webinars, seminars and quizzes. Connect with innovators and build something amazing.
           </p>
         </div>
       </div>

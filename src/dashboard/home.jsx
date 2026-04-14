@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./home.css";
+import logo from "../assets/logo.svg";
 
 function Home() {
   const [query, setQuery] = useState("");
@@ -15,8 +16,10 @@ function Home() {
       {/* NAVBAR */}
       <nav className="navbar">
         <div className="nav-logo">
-          <span className="logo-icon">⚡</span>
-          <span className="logo-text">Evently</span>
+          <span className="logo-icon">
+            <img src={logo} alt="logo" />
+          </span>
+          <span className="logo-text">EventSphere</span>
         </div>
         <ul className="nav-links">
           <li><a href="#">Explore</a></li>

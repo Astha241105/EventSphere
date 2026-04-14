@@ -12,12 +12,6 @@ function ResetPassword() {
       <div className="reset-right">
         <div className="reset-card">
 
-          {/* Header */}
-          <div className="reset-header">
-            <span className="back-arrow">←</span>
-            <span className="reset-title">Reset Password</span>
-          </div>
-
           {/* Illustration */}
           <div className="reset-illustration">
   <div
@@ -45,11 +39,6 @@ function ResetPassword() {
               Send Reset Link →
             </button>
           </form>
-
-          {/* Footer */}
-          <div className="reset-footer">
-            ← Back to Login
-          </div>
 
         </div>
       </div>
