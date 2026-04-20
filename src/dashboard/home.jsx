@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../eventDetails/details.css";
+import "../createevent/create.css";
 import "./home.css";
 import logo from "../assets/logo.svg";
 
