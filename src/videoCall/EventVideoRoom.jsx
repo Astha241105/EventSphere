@@ -5,7 +5,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import VideoCall from "./VideoCall";
-import "./VideoCall.css";
+import "./EventVideoRoom.css";
 
 const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
@@ -19,10 +19,10 @@ export default function EventVideoRoom({ eventId, eventTitle }) {
 
   const [status, setStatus] = useState(null); // null | { isActive, isUpcoming, isEnded, ... }
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [inCall, setInCall] = useState(false);
   const [countdown, setCountdown] = useState(null);
-
+  const [error, setError] = useState(null);
+  
   const fetchStatus = useCallback(async () => {
     try {
       const res = await fetch(`${API_BASE}/api/video/room/${eventId}/status`, {

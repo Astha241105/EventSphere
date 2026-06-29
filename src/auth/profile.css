@@ -214,3 +214,154 @@ body {
     grid-template-columns: 1fr;
   }
 }
+/* ─── Paste at the bottom of your existing profile.css ──────────────────────── */
+
+/* ── Loading ── */
+.prof-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 12px;
+  color: #6b7a99;
+  font-size: 14px;
+}
+
+.prof-spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid #dde5f5;
+  border-top-color: #185fa5;
+  border-radius: 50%;
+  animation: prof-spin 0.7s linear infinite;
+}
+
+@keyframes prof-spin { to { transform: rotate(360deg); } }
+
+/* ── Section header count badge ── */
+.section-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background: #e6f1fb;
+  color: #185fa5;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.section-count--live {
+  background: #fde8e8;
+  color: #c0392b;
+  animation: prof-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes prof-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.6; }
+}
+
+/* ── Category badge ── */
+.prof-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Empty state inside section ── */
+.prof-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 28px 10px;
+  color: #9aa5be;
+  font-size: 13px;
+  text-align: center;
+}
+.prof-empty span { font-size: 28px; }
+
+/* ── Event card body ── */
+.event-card-body { flex: 1; }
+.event-meta-line { font-size: 12px; color: #6b7a99; margin: 2px 0; }
+.event-ticket    { font-size: 11px; color: #185fa5; font-family: monospace; margin-top: 4px; }
+
+/* ── List item body ── */
+.list-item-body { flex: 1; }
+.list-item { cursor: pointer; transition: background 0.12s; border-radius: 8px; padding: 4px; }
+.list-item:hover { background: #f5f7fc; }
+
+/* Cancelled dot */
+.dot--cancelled { background: #d85a30 !important; }
+
+.prof-cancelled-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #d85a30;
+  background: #faece7;
+  padding: 1px 7px;
+  border-radius: 100px;
+  margin-top: 4px;
+}
+
+/* ── Ongoing / live card ── */
+.fav-card--live {
+  border: 1.5px solid #f5c4c4 !important;
+  background: #fffafa !important;
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+.fav-card--live:hover { box-shadow: 0 2px 12px rgba(192, 57, 43, 0.12); }
+
+.live-dot-wrap {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e74c3c;
+  animation: prof-pulse 1s ease-in-out infinite;
+}
+
+.live-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #e74c3c;
+  letter-spacing: 0.08em;
+}
+
+.time-left {
+  font-size: 11px;
+  color: #e74c3c;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.join-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #185fa5;
+  background: #e6f1fb;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.12s;
+}
+.join-link:hover { background: #b5d4f4; }

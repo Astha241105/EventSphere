@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signup.css";
 import AuthIllustrationBg from "./background";
+import { toast } from "react-toastify";
 
 const API_BASE = "http://localhost:5000/api";
 
@@ -10,22 +11,37 @@ function SignUp() {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", confirmPassword: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setError("");
+    
   };
+  const passwordRegex =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    setError("");
-
+    
+  // Name validation
+  if (formData.name.trim().length > 50) {
+    toast.error("Name must be less than 50 characters.");
+    return;
+  }
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
+      toast.error("Passwords do not match.");
       return;
     }
+
+      // Password strength validation
+  if (!passwordRegex.test(formData.password)) {
+    toast.error(
+      "Password must be at least 8 characters long and include uppercase, lowercase, number, and special character."
+    );
+    return;
+  }
+
 
     setLoading(true);
     try {
@@ -33,8 +49,8 @@ function SignUp() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
+          name: formData.name.trim(),
+          email: formData.email.trim(),
           password: formData.password,
           role,
         }),
@@ -43,13 +59,14 @@ function SignUp() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.message || "Registration failed.");
+        toast.error(data.message || "Registration failed.");
         return;
       }
+       toast.success("OTP sent successfully!");
 
       navigate("/otp", { state: { email: formData.email } });
     } catch (err) {
-      setError("Network error. Please try again.");
+      toast.error("Network error. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -68,8 +85,6 @@ function SignUp() {
           <div className="card-header">
             <h3 className="card-title">Create Your Account</h3>
           </div>
-
-          {error && <p className="msg error">{error}</p>}
 
           {/* ROLE SELECT */}
           <div className="role-section">
@@ -101,6 +116,7 @@ function SignUp() {
               placeholder="John Doe"
               value={formData.name}
               onChange={handleChange}
+              maxLength={50}
               required
             />
 

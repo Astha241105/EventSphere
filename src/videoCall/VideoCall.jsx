@@ -4,7 +4,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useWebRTC } from "./useWebRTC";
 import VideoTile from "./VideoTile";
-import "./VideoCall.css";
+import "./EventVideoRoom.css";
 
 export default function VideoCall({ eventId, eventTitle, userId, userName, token, onLeave }) {
   const [showChat, setShowChat] = useState(false);

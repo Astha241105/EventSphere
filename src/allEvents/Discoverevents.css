@@ -1,0 +1,212 @@
+/* ─── DiscoverEvents Page ────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.de-page {
+  min-height: 100vh;
+  background: #f5f7fc;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ── Navbar ── */
+.de-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e8edf5;
+  padding: 0 32px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.de-navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.de-navbar__logo-icon {
+  color: #1a5fd1;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.de-navbar__logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a5fd1;
+  letter-spacing: -0.01em;
+}
+
+/* ── Main content ── */
+.de-main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 20px 60px;
+}
+
+/* ── Heading ── */
+.de-heading {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+/* ── Search ── */
+.de-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1.5px solid #e0e8f7;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.de-search-wrap:focus-within {
+  border-color: #1a5fd1;
+  box-shadow: 0 0 0 3px rgba(26, 95, 209, 0.1);
+}
+
+.de-search__icon {
+  font-size: 14px;
+  flex-shrink: 0;
+  color: #9aa5be;
+}
+
+.de-search__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #111827;
+  background: transparent;
+}
+
+.de-search__input::placeholder {
+  color: #9aa5be;
+}
+
+.de-search__clear {
+  background: none;
+  border: none;
+  color: #9aa5be;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.de-search__clear:hover {
+  color: #1a5fd1;
+}
+
+/* ── Filter pills ── */
+.de-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.de-filter-btn {
+  padding: 7px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid #dde5f5;
+  background: #ffffff;
+  color: #4b5a7a;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.de-filter-btn:hover {
+  border-color: #1a5fd1;
+  color: #1a5fd1;
+}
+
+.de-filter-btn--active {
+  background: #1a5fd1;
+  border-color: #1a5fd1;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.de-filter-btn--active:hover {
+  background: #1450b8;
+}
+
+/* ── Events list ── */
+.de-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── State views ── */
+.de-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 60px 20px;
+  text-align: center;
+  color: #6b7a99;
+  font-size: 14px;
+}
+
+.de-state__icon {
+  font-size: 36px;
+}
+
+.de-state--error {
+  color: #c0392b;
+}
+
+.de-retry-btn {
+  padding: 7px 20px;
+  background: #1a5fd1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* ── Spinner ── */
+.de-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #dde5f5;
+  border-top-color: #1a5fd1;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  .de-heading { font-size: 22px; }
+  .de-main    { padding: 24px 14px 48px; }
+  .de-navbar  { padding: 0 16px; }
+}

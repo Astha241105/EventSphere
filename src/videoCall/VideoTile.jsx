@@ -2,7 +2,7 @@
 // Place in: EVENTSPHERE/src/videoCall/VideoTile.jsx
 
 import { useEffect, useRef } from "react";
-import "./VideoCall.css";
+import "./EventVideoRoom.css";
 
 export default function VideoTile({ stream, userName, isMuted, isCamOff, isLocal = false, isScreenSharing = false }) {
   const videoRef = useRef(null);

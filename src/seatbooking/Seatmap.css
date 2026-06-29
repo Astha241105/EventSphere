@@ -1,0 +1,215 @@
+/* ─── SeatMap ───────────────────────────────────────────────────────────────── */
+
+.sm-wrap { padding: 4px 0; }
+
+/* Stage banner */
+.sm-stage {
+  background: linear-gradient(135deg, #e6f1fb, #b5d4f4);
+  border: 1.5px solid #85b7eb;
+  border-radius: 8px;
+  text-align: center;
+  padding: 9px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #185fa5;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+/* Grid */
+.sm-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+.sm-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sm-row-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b8cae;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.sm-aisle {
+  display: inline-block;
+  width: 16px;
+  flex-shrink: 0;
+}
+
+/* ── Seat button ── */
+.sm-seat {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px 6px 3px 3px;
+  font-size: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: transform 0.12s, box-shadow 0.12s, background 0.1s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Available */
+.sm-seat--free {
+  background: #ddeeff;
+  border-color: #85b7eb;
+  color: #185fa5;
+}
+.sm-seat--free:hover:not(:disabled) {
+  transform: scale(1.2);
+  background: #b5d4f4;
+  box-shadow: 0 2px 8px rgba(24, 95, 165, 0.3);
+}
+
+/* VIP available */
+.sm-seat--vip {
+  background: #eeedfe;
+  border-color: #afa9ec;
+  color: #3c3489;
+}
+.sm-seat--vip:hover:not(:disabled) {
+  transform: scale(1.2);
+  background: #cecbf6;
+  box-shadow: 0 2px 8px rgba(83, 74, 183, 0.3);
+}
+
+/* Selected (clicked, not yet confirmed) */
+.sm-seat--selected {
+  background: #185fa5;
+  border-color: #0c447c;
+  color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 2px 10px rgba(24, 95, 165, 0.5);
+}
+
+/* Occupied by someone else */
+.sm-seat--occupied {
+  background: #edf0f5;
+  border-color: #c8d3e8;
+  color: #b0bcd4;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Your booked seat */
+.sm-seat--mine {
+  background: #1d9e75 !important;
+  border-color: #0f6e56 !important;
+  color: #fff !important;
+  cursor: default;
+  font-size: 12px;
+  transform: scale(1.05);
+}
+
+/* ── Legend ── */
+.sm-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.sm-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #6b7a99;
+}
+
+.sm-dot {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  border: 1.5px solid transparent;
+  flex-shrink: 0;
+}
+.sm-dot--free     { background: #ddeeff;  border-color: #85b7eb; }
+.sm-dot--vip      { background: #eeedfe;  border-color: #afa9ec; }
+.sm-dot--selected { background: #185fa5; }
+.sm-dot--mine     { background: #1d9e75; }
+.sm-dot--occupied { background: #edf0f5;  border-color: #c8d3e8; }
+
+/* ── My booking banner ── */
+.sm-my-booking-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #e8faf4;
+  border: 1.5px solid #9fe1cb;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.sm-my-booking-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sm-my-booking-icon {
+  font-size: 20px;
+  color: #1d9e75;
+}
+
+.sm-my-booking-seat {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0c5c42;
+  margin: 0 0 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sm-my-booking-ticket {
+  font-size: 12px;
+  color: #2e8a67;
+  margin: 0;
+  font-family: monospace;
+}
+
+.sm-vip-tag {
+  font-size: 9px;
+  background: #eeedfe;
+  color: #534ab7;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+.sm-cancel-btn {
+  font-size: 12px;
+  padding: 6px 14px;
+  border: 1.5px solid #f5c4b3;
+  background: transparent;
+  color: #d85a30;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+.sm-cancel-btn:hover { background: #faece7; }

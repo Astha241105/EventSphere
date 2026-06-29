@@ -3,7 +3,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #f0f2f8;
+  --bgcreate: #f0f2f8;
   --surface: #ffffff;
   --surface-2: #f7f8fc;
   --border: #e2e5f0;
@@ -26,12 +26,15 @@
 
 body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
 
+.create-event{
+  background: var(--bg);
+}
 /* ── ROOT ── */
 .ec-root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background: var(--bgcreate);
   font-family: 'DM Sans', sans-serif;
 }
 
@@ -427,7 +430,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
 .ec-upload-zone:hover .ec-upload-overlay { opacity: 1; }
 
 /* ── CARD ── */
-.ec-card {
+.ec-card1 {
   background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
@@ -436,7 +439,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   box-shadow: var(--shadow);
 }
 
-.ec-card-header {
+.ec-card-header1 {
   font-family: 'Syne', sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -448,7 +451,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   gap: 8px;
 }
 
-.ec-card-icon { font-size: 18px; }
+.ec-card-icon1 { font-size: 18px; }
 
 /* ── DATES ── */
 .ec-dates-grid {

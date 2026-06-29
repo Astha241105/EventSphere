@@ -37,9 +37,9 @@ body {
   justify-content: space-between;
   padding: 0 48px;
   height: 64px;
-  background: rgba(255, 255, 255, 0.85);
+  background: white;
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
+  /* border-bottom: 1px solid var(--border); */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -60,11 +60,15 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   /* background: var(--blue); */
   border-radius: 8px;
   font-size: 14px;
+}
+#logo{
+  width: 60px;
+  height: 60px;
 }
 
 .nav-links {
@@ -119,6 +123,94 @@ body {
   background: var(--blue-dark);
   transform: translateY(-1px);
   box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+}
+
+/* Profile Menu Container */
+.profile-menu {
+  position: relative;
+  display: inline-block;
+}
+
+/* Profile Button */
+.profile-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.profile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px #2563eb;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+
+  min-width: 180px;
+  background: rgba(20, 20, 35, 0.95);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+
+  padding: 8px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+
+/* Show on Hover */
+.profile-menu:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Buttons */
+.dropdown button {
+  width: 100%;
+  background: transparent;
+  border: none;
+
+  color: white;
+  text-align: left;
+
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  font-size: 0.95rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.dropdown button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  padding-left: 18px;
+}
+
+/* Logout Button */
+.dropdown button:last-child {
+  color: #ff6b6b;
+}
+
+.dropdown button:last-child:hover {
+  background: rgba(255, 107, 107, 0.12);
 }
 
 /* ── HERO ── */

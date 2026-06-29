@@ -1,36 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import "./details.css";
 
-const requirements = [
-  "Active professional developer or graduate student in CS/AI",
-  "Laptop required with Python 3.10+ and Docker pre-installed",
-  "LinkedIn profile verification required during registration",
-  "Portfolio or GitHub link with at least one AI project",
-];
-
-const scheduleItems = [
-  { time: "09:00", title: "Opening Keynote: The Agentic Era", track: "Main Stage", tag: "keynote", label: "Keynote" },
-  { time: "10:30", title: "Building Production RAG Pipelines", track: "Workshop Hall A", tag: "workshop", label: "Workshop" },
-  { time: "13:00", title: "LLM Safety in Prod Systems", track: "Track B", tag: "panel", label: "Panel" },
-  { time: "15:00", title: "Fine-tuning vs Prompting at Scale", track: "Workshop Hall A", tag: "workshop", label: "Workshop" },
-  { time: "17:30", title: "Networking & Demo Showcase", track: "Expo Floor", tag: "social", label: "Social" },
-];
-
-const speakers = [
-  { initials: "AK", name: "Aisha Kim", role: "Head of AI, Stripe", color: "blue" },
-  { initials: "MR", name: "Marco Ruiz", role: "Researcher, OpenAI", color: "green" },
-  { initials: "SL", name: "Sara Lin", role: "CTO, Cohere", color: "amber" },
-  { initials: "JP", name: "James Park", role: "ML Eng, Google", color: "pink" },
-  { initials: "NB", name: "Nina Bell", role: "Founder, Replicate", color: "purple" },
-  { initials: "OT", name: "Omar Tahir", role: "VP Eng, Hugging Face", color: "teal" },
-];
-
-const TABS = ["Overview", "Schedule", "Speakers"];
+const TABS = ["Overview", "Details"];
 
 function CheckIcon() {
   return (
     <svg viewBox="0 0 10 10" fill="none" width="10" height="10">
-      <path d="M2 5l2 2 4-4" stroke="#0057ff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M2 5l2 2 4-4"
+        stroke="#0057ff"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -38,7 +21,12 @@ function CheckIcon() {
 function HeartIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-      <path d="M9 15.5s-7-4.5-7-9a4 4 0 018 0 4 4 0 018 0c0 4.5-7 9-7 9z" stroke="#888" strokeWidth="1.4" strokeLinejoin="round" />
+      <path
+        d="M9 15.5s-7-4.5-7-9a4 4 0 018 0 4 4 0 018 0c0 4.5-7 9-7 9z"
+        stroke="#888"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -46,8 +34,21 @@ function HeartIcon() {
 function CalendarIcon() {
   return (
     <svg className="meta-icon" viewBox="0 0 16 16" fill="none">
-      <rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M5 2v2M11 2v2M2 7h12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      <rect
+        x="2"
+        y="3"
+        width="12"
+        height="11"
+        rx="1.5"
+        stroke="currentColor"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M5 2v2M11 2v2M2 7h12"
+        stroke="currentColor"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -55,8 +56,18 @@ function CalendarIcon() {
 function PinIcon() {
   return (
     <svg className="meta-icon" viewBox="0 0 16 16" fill="none">
-      <path d="M8 1.5C5.79 1.5 4 3.29 4 5.5c0 3.25 4 9 4 9s4-5.75 4-9c0-2.21-1.79-4-4-4z" stroke="currentColor" strokeWidth="1.2" />
-      <circle cx="8" cy="5.5" r="1.5" stroke="currentColor" strokeWidth="1.2" />
+      <path
+        d="M8 1.5C5.79 1.5 4 3.29 4 5.5c0 3.25 4 9 4 9s4-5.75 4-9c0-2.21-1.79-4-4-4z"
+        stroke="currentColor"
+        strokeWidth="1.2"
+      />
+      <circle
+        cx="8"
+        cy="5.5"
+        r="1.5"
+        stroke="currentColor"
+        strokeWidth="1.2"
+      />
     </svg>
   );
 }
@@ -64,142 +75,184 @@ function PinIcon() {
 function CardIcon() {
   return (
     <svg className="meta-icon" viewBox="0 0 16 16" fill="none">
-      <rect x="1.5" y="3.5" width="13" height="9" rx="1" stroke="currentColor" strokeWidth="1.2" />
-      <path d="M1.5 6.5h13" stroke="currentColor" strokeWidth="1.2" />
+      <rect
+        x="1.5"
+        y="3.5"
+        width="13"
+        height="9"
+        rx="1"
+        stroke="currentColor"
+        strokeWidth="1.2"
+      />
+      <path
+        d="M1.5 6.5h13"
+        stroke="currentColor"
+        strokeWidth="1.2"
+      />
     </svg>
   );
 }
 
-function Overview() {
-  return (
-    <>
-      <div className="section">
-        <h2 className="section-title">About the event</h2>
-        <div className="about-card">
-          <p className="about-text">
-            The Global AI Builders Summit is a premier gathering designed for developers, architects, and engineers at
-            the forefront of the generative AI revolution. This year, we focus on the transition from experimental
-            prototypes to production-ready autonomous systems.
-          </p>
-        </div>
-      </div>
-
-      <div className="section section-gap">
-        <h2 className="section-title">Requirements</h2>
-        <div className="req-card">
-          {requirements.map((req, i) => (
-            <div className="req-item" key={i}>
-              <div className="req-check">
-                <CheckIcon />
-              </div>
-              <p className="req-text" dangerouslySetInnerHTML={{ __html: req.replace(/Python 3\.10\+|Docker|LinkedIn profile verification|GitHub link|at least one AI project|Active professional developer|graduate student in CS\/AI/g, (m) => `<strong>${m}</strong>`) }} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </>
-  );
-}
-
-function Schedule() {
-  return (
-    <div className="section">
-      <h2 className="section-title">Day 1 — Oct 14</h2>
-      <div className="schedule-list">
-        {scheduleItems.map((item, i) => (
-          <div className="sched-item" key={i}>
-            <div className="sched-time">{item.time}</div>
-            <div className="sched-info">
-              <div className="sched-title">{item.title}</div>
-              <div className="sched-track">{item.track}</div>
-            </div>
-            <span className={`sched-tag tag-${item.tag}`}>{item.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function Speakers() {
-  return (
-    <div className="section">
-      <h2 className="section-title">Featured speakers</h2>
-      <div className="speakers-grid">
-        {speakers.map((s, i) => (
-          <div className="speaker-card" key={i}>
-            <div className={`speaker-avatar avatar-${s.color}`}>{s.initials}</div>
-            <div className="speaker-name">{s.name}</div>
-            <div className="speaker-role">{s.role}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function EventDetails() {
-  const [activeTab, setActiveTab] = useState("Overview");
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState(false);
+  const [activeTab, setActiveTab] = useState("Overview");
+
+  useEffect(() => {
+    fetchEvent();
+  }, [id]);
+
+  const fetchEvent = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/events/${id}`
+      );
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setEvent(data.event);
+      }
+    } catch (error) {
+      console.error("Error fetching event:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const formatDate = (date) => {
+    if (!date) return "To Be Announced";
+
+    return new Date(date).toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  };
+
+  const handleRegister = () => {
+    if (event.category === "Seminar") {
+      navigate(`/seat-allocation/${event._id}`);
+    } else if (event.category === "Hackathon") {
+      navigate(`/event/${event._id}/team`);
+    } else {
+      navigate(`/register/${event._id}`);
+    }
+  };
+
+  if (loading) {
+    return <div className="page">Loading...</div>;
+  }
+
+  if (!event) {
+    return <div className="page">Event not found.</div>;
+  }
 
   return (
     <div className="page">
-      {/* Hero */}
-      <div className="hero2">
-        <div className="hero-grid" />
-        <svg className="hero-blobs" viewBox="0 0 600 220" preserveAspectRatio="xMidYMid slice">
-          <circle cx="500" cy="60" r="120" fill="#0057ff" opacity="0.35" />
-          <circle cx="80" cy="180" r="80" fill="#00c6ff" opacity="0.2" />
-        </svg>
+      {/* HERO */}
+      <div
+        className="hero2"
+        style={{
+          backgroundImage: `url(http://localhost:5000${event.coverImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="hero-overlay" />
-        <span className="hero-badge">Upcoming Event</span>
-        <button className="back-btn">← Back</button>
+
+        <span className="hero-badge">
+          {event.category}
+        </span>
+
+        <button
+          className="back-btn"
+          onClick={() => navigate(-1)}
+        >
+          ← Back
+        </button>
+
         <div className="hero-content">
-          <h1 className="hero-title">Global AI Builders Summit 2024</h1>
+          <h1 className="hero-title">
+            {event.eventName}
+          </h1>
+
+          <p className="hero-subtitle">
+            {event.tagline}
+          </p>
+
           <div className="hero-meta">
-            <div className="meta-item"><CalendarIcon /> Oct 14–18, 2024</div>
-            <div className="meta-item"><PinIcon /> San Francisco, CA</div>
-            <div className="meta-item"><CardIcon /> Free Entrance</div>
+            <div className="meta-item">
+              <CalendarIcon />
+              {formatDate(event.eventStart)}
+            </div>
+
+            <div className="meta-item">
+              <PinIcon />
+              {event.mode === "online"
+                ? "Online"
+                : event.mode === "hybrid"
+                ? "Hybrid"
+                : `${event.venueName || ""} ${
+                    event.city || ""
+                  }`}
+            </div>
+
+            <div className="meta-item">
+              <CardIcon />
+              {event.mode}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Stats */}
+      {/* STATS */}
       <div className="stats-row">
         <div className="stat-cell">
-          <div className="stat-label">Start time</div>
-          <div className="stat-value">09:00 AM</div>
-          <div className="stat-sub">PST</div>
+          <div className="stat-label">
+            Team Size
+          </div>
+
+          <div className="stat-value">
+            {event.minTeamSize} - {event.maxTeamSize}
+          </div>
         </div>
+
         <div className="stat-cell">
-          <div className="stat-label">Attendance</div>
-          <div className="stat-value">500+</div>
-          <div className="stat-sub">Confirmed</div>
+          <div className="stat-label">
+            Registration Opens
+          </div>
+
+          <div className="stat-value">
+            {formatDate(event.registrationOpen)}
+          </div>
         </div>
+
         <div className="stat-cell">
-          <div className="stat-label">Availability</div>
-          <div className="stat-value stat-limited">Limited</div>
-          <div className="stat-sub">Slots left</div>
+          <div className="stat-label">
+            Status
+          </div>
+
+          <div className="stat-value">
+            {event.status}
+          </div>
         </div>
       </div>
 
-      {/* Capacity Bar */}
-      <div className="capacity-bar">
-        <div className="cap-row">
-          <span>Registrations</span>
-          <span className="cap-count">362 / 500</span>
-        </div>
-        <div className="cap-track">
-          <div className="cap-fill" style={{ width: "72%" }} />
-        </div>
-      </div>
-
-      {/* Tabs */}
+      {/* TABS */}
       <div className="nav-tabs">
         {TABS.map((tab) => (
           <button
             key={tab}
-            className={`nav-tab${activeTab === tab ? " active" : ""}`}
+            className={`nav-tab ${
+              activeTab === tab ? "active" : ""
+            }`}
             onClick={() => setActiveTab(tab)}
           >
             {tab}
@@ -207,23 +260,121 @@ export default function EventDetails() {
         ))}
       </div>
 
-      {/* Tab Content */}
-      {activeTab === "Overview" && <Overview />}
-      {activeTab === "Schedule" && <Schedule />}
-      {activeTab === "Speakers" && <Speakers />}
+      {/* OVERVIEW TAB */}
+      {activeTab === "Overview" && (
+        <>
+          <div className="section">
+            <h2 className="section-title">
+              About Event
+            </h2>
+
+            <div className="about-card">
+              <p className="about-text">
+                {event.description}
+              </p>
+            </div>
+          </div>
+
+          <div className="section section-gap">
+            <h2 className="section-title">
+              Eligibility
+            </h2>
+
+            <div className="req-card">
+              {event.eligibleFor?.length > 0 ? (
+                event.eligibleFor.map((item, index) => (
+                  <div
+                    className="req-item"
+                    key={index}
+                  >
+                    <div className="req-check">
+                      <CheckIcon />
+                    </div>
+
+                    <p className="req-text">
+                      {item}
+                    </p>
+                  </div>
+                ))
+              ) : (
+                <p className="req-text">
+                  Open for everyone
+                </p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* DETAILS TAB */}
+      {activeTab === "Details" && (
+        <div className="section">
+          <h2 className="section-title">
+            Event Details
+          </h2>
+
+          <div className="about-card">
+            <p>
+              <strong>Category:</strong>{" "}
+              {event.category}
+            </p>
+
+            <p>
+              <strong>Mode:</strong> {event.mode}
+            </p>
+
+            <p>
+              <strong>Open To:</strong>{" "}
+              {event.openTo}
+            </p>
+
+            <p>
+              <strong>Skills:</strong>{" "}
+              {event.skills || "Not specified"}
+            </p>
+
+            <p>
+              <strong>Prize Pool:</strong>{" "}
+              {event.totalPool || "N/A"}
+            </p>
+
+            <p>
+              <strong>Venue:</strong>{" "}
+              {event.venueName || "N/A"}
+            </p>
+
+            <p>
+              <strong>Address:</strong>{" "}
+              {event.venueAddress || "N/A"}
+            </p>
+
+            <p>
+              <strong>Registration Closes:</strong>{" "}
+              {formatDate(event.registrationClose)}
+            </p>
+          </div>
+        </div>
+      )}
 
       <div className="bottom-spacer" />
 
-      {/* Bottom Bar */}
+      {/* BOTTOM BAR */}
       <div className="bottom-bar">
         <button
-          className={`save-btn${saved ? " saved" : ""}`}
+          className={`save-btn ${
+            saved ? "saved" : ""
+          }`}
           onClick={() => setSaved(!saved)}
-          aria-label="Save event"
         >
           <HeartIcon />
         </button>
-        <button className="register-btn">Register now →</button>
+
+        <button
+          className="register-btn"
+          onClick={handleRegister}
+        >
+          Register Now →
+        </button>
       </div>
     </div>
   );

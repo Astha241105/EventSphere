@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState ,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../eventDetails/details.css";
+import { toast } from "react-toastify";
 import "../createevent/create.css";
 import "./home.css";
 import logo from "../assets/logo.svg";
@@ -12,6 +14,40 @@ function Home() {
     console.log("Searching:", query);
   };
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [role, setRole] = useState("");
+const navigate = useNavigate();
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  const userRole = localStorage.getItem("role");
+
+  if (token) {
+    setIsLoggedIn(true);
+    setRole(userRole);
+  }
+}, []);
+
+const handleCreateEvent = () => {
+  // User not logged in
+    const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+  if (!token) {
+    toast.warning("Please login to host an event");
+    return;
+  }
+
+  // Logged in but participant
+  if (role === "participant") {
+    toast.warning("Please login as a host to create an event");
+    return;
+  }
+
+  // Host can create events
+  if (role === "host") {
+    navigate("/create");
+  }
+};
   return (
     <div className="home">
 
@@ -19,27 +55,88 @@ function Home() {
       <nav className="navbar">
         <div className="nav-logo">
           <span className="logo-icon">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" id="logo" />
           </span>
           <span className="logo-text">EventSphere</span>
         </div>
         <ul className="nav-links">
-          <li><a href="#">Explore</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Resources</a></li>
-        </ul>
+  {role === "host" ? (
+    <>
+      <li>
+        <a onClick={() => navigate("/create")}>
+          Create Event
+        </a>
+      </li>
+
+      <li>
+        <a onClick={() => navigate("/my-events")}>
+          My Events
+        </a>
+      </li>
+
+      <li>
+        <a onClick={() => navigate("/attendees")}>
+          Attendees
+        </a>
+      </li>
+
+      {/* <li>
+        <a onClick={() => navigate("/analytics")}>
+          Analytics
+        </a>
+      </li> */}
+    </>
+  ) : (
+    <>
+     <li><a onClick={() => navigate("/discover-events?category=Seminars")} style={{cursor:"pointer"}}>Seminar</a></li>
+<li><a onClick={() => navigate("/discover-events?category=Webinars")} style={{cursor:"pointer"}}>Webinar</a></li>
+<li><a onClick={() => navigate("/discover-events?category=Hackathons")} style={{cursor:"pointer"}}>Hackathon</a></li>
+<li><a onClick={() => navigate("/discover-events?category=Quizzes")} style={{cursor:"pointer"}}>Quiz</a></li>
+    </>
+  )}
+</ul>
         <div className="nav-actions">
-          <a href="#" className="login-link">Log In</a>
-          <a href="#" className="get-started-btn">Get Started</a>
-        </div>
+  {!isLoggedIn ? (
+    <>
+      <a
+        className="login-link"
+        onClick={() => navigate("/login")}
+      >
+        Log In
+      </a>
+
+      <a
+        className="get-started-btn"
+        onClick={() => navigate("/signup")}
+      >
+        Get Started
+      </a>
+    </>
+  ) : (
+  <div className="profile-menu">
+  <button className="profile-btn">👤 My Account</button>
+  <div className="dropdown">
+    <button onClick={() => navigate("/profile")}>
+      Profile
+    </button>
+
+    <button
+      onClick={() => {
+        localStorage.clear();
+        navigate("/");
+        window.location.reload();
+      }}
+    >
+      Logout
+    </button>
+  </div>
+</div>
+  )}
+</div>
       </nav>
 
       {/* HERO */}
       <section className="hero">
-        <div className="hero-badge">
-          <span className="badge-dot">✦</span>
-          NEW: AI-POWERED EVENT MATCHING
-        </div>
 
         <h1 className="hero-title">
           Discover and Host<br />
@@ -52,12 +149,12 @@ function Home() {
         </p>
 
         <div className="hero-cta">
-          <a href="#" className="btn-primary">
+          <button className="btn-primary" onClick={() => navigate("/discover-events")}>
             <span className="btn-icon">◎</span> Explore Events
-          </a>
-          <a href="#" className="btn-secondary">
-            <span className="btn-icon">⊕</span> Host an Event
-          </a>
+          </button>
+          <button className="btn-secondary" onClick={handleCreateEvent}>
+  <span className="btn-icon">⊕</span> Host an Event
+</button>
         </div>
 
         {/* SEARCH BAR */}
@@ -65,19 +162,13 @@ function Home() {
           <span className="search-icon">🔍</span>
           <input
             type="text"
-            placeholder="Search for hackathons, workshops, or conferences..."
+            placeholder="Search by name , category or mode"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
           <button type="submit" className="search-btn">Search</button>
         </form>
 
-        {/* PAGINATION DOTS */}
-        <div className="hero-dots">
-          <span className="dot active"></span>
-          <span className="dot"></span>
-          <span className="dot"></span>
-        </div>
       </section>
 
       {/* STATS */}

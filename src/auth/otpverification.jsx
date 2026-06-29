@@ -2,13 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./otpverification.css";
 import AuthIllustrationBg from "./background";
+import { toast } from "react-toastify";
 
 const API_BASE = "http://localhost:5000/api";
 
 function VerifyCode() {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [timer, setTimer] = useState(119);
-  const [error, setError] = useState("");
+  
   const [loading, setLoading] = useState(false);
   const inputRefs = useRef([]);
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function VerifyCode() {
     const updated = [...otp];
     updated[index] = val;
     setOtp(updated);
-    setError("");
+    
     if (val && index < 5) inputRefs.current[index + 1].focus();
   };
 
@@ -49,47 +50,85 @@ function VerifyCode() {
     inputRefs.current[nextEmpty === -1 ? 5 : nextEmpty].focus();
   };
 
-  const handleResend = async () => {
-    setOtp(Array(6).fill(""));
-    setTimer(119);
-    setError("");
-    inputRefs.current[0].focus();
-    try {
-      await fetch(`${API_BASE}/auth/resend-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-    } catch {
-      setError("Failed to resend OTP. Please try again.");
-    }
-  };
+const handleResend = async () => {
+  setOtp(Array(6).fill(""));
+  setTimer(119);
 
-  const handleVerify = async () => {
-    const code = otp.join("");
-    if (code.length < 6) return;
-    setLoading(true);
-    try {
-      const res = await fetch(`${API_BASE}/auth/verify-otp`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, otp: code }),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        localStorage.setItem("token", data.token);
-        navigate("/");
-      } else {
-        setError(data.message || "Incorrect code. Please try again.");
-        setOtp(Array(6).fill(""));
-        inputRefs.current[0].focus();
-      }
-    } catch {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+  inputRefs.current[0].focus();
+
+  try {
+    const res = await fetch(`${API_BASE}/auth/resend-otp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      toast.success("OTP resent successfully!");
+    } else {
+      toast.error(data.message || "Failed to resend OTP.");
     }
-  };
+  } catch (error) {
+    toast.error("Failed to resend OTP. Please try again.");
+  }
+};
+const handleVerify = async () => {
+  const code = otp.join("");
+
+  if (code.length < 6) {
+    toast.error("Please enter the complete 6-digit OTP.");
+    return;
+  }
+
+  setLoading(true);
+
+  try {
+    console.log("ok");
+    const res = await fetch(`${API_BASE}/auth/verify-otp`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        otp: code,
+      }),
+    });
+
+    const data = await res.json();
+    // console.log("ok");
+    console.log("Response:", data);
+
+    if (res.ok) {
+      // console.log("ok");
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.user.role);
+
+      toast.success("Verification successful!");
+
+      setTimeout(() => {
+        if (data.role === "host") {
+          navigate("/host-dashboard");
+        } else {
+          navigate("/dashboard");
+        }
+      }, 1000);
+    } else {
+      toast.error(data.message || "Incorrect code. Please try again.");
+      setOtp(Array(6).fill(""));
+      inputRefs.current[0]?.focus();
+    }
+  } catch (error) {
+    console.error(error);
+    toast.error("Something went wrong. Please try again.");
+  } finally {
+    setLoading(false);
+  }
+};
 
   const allFilled = otp.every(v => v !== "");
 
@@ -124,8 +163,7 @@ function VerifyCode() {
               />
             ))}
           </div>
-
-          {error && <p className="error-msg">{error}</p>}
+          
 
           <p className="timer">
             ⏱ Expires in <span>{formatTime(timer)}</span>
