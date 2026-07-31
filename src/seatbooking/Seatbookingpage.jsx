@@ -21,7 +21,7 @@ import {
   selectLastTicket,
 } from "./seatbookingslice";
 import SeatMap from "./SeatMap";
-import "./SeatBookingPage.css";
+import "./Seatbookingpage.css";
 
 const ROW_LABELS = "ABCDEFGHIJKLMNOPQRST";
 
