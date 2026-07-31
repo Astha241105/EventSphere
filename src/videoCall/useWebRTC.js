@@ -100,7 +100,7 @@ export function useWebRTC({ eventId, userId, userName, token }) {
         setLocalStream(stream);
 
         // Connect socket
-        const socket = io(import.meta.env.VITE_BACKEND_URL || "http://localhost:5000", {
+        const socket = io(import.meta.env.VITE_BACKEND_URL || "https://eventsphere-backend-he6w.onrender.com", {
           auth: { token },
           transports: ["websocket"],
         });

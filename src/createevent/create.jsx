@@ -266,7 +266,7 @@ function EventCreation() {
       const token = localStorage.getItem("token");
 
       // 1. Create the event
-      const res = await fetch("http://localhost:5000/api/events", {
+      const res = await fetch("https://eventsphere-backend-he6w.onrender.com/api/events", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -284,7 +284,7 @@ function EventCreation() {
         const questionsPayload = form.questions.map(({ id, ...rest }) => rest);
         console.log(questionsPayload); // drop local id
         console.log(event._id); // drop local id
-        const quizRes = await fetch("http://localhost:5000/api/quiz", {
+        const quizRes = await fetch("https://eventsphere-backend-he6w.onrender.com/api/quiz", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

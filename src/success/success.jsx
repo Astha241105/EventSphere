@@ -34,7 +34,7 @@ const RegistrationSuccess = () => {
     const fetchEvent = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res   = await fetch(`http://localhost:5000/api/events/${eventId}`, {
+        const res   = await fetch(`https://eventsphere-backend-he6w.onrender.com/api/events/${eventId}`, {
           headers: token ? { Authorization: `Bearer ${token}` } : {},
         });
         const data = await res.json();

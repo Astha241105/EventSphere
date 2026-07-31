@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE = "http://localhost:5000/api/events";
+const BASE = "https://eventsphere-backend-he6w.onrender.com/api/events";
 const auth = () => ({ headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } });
 
 // ── Thunks ────────────────────────────────────────────────────────────────────

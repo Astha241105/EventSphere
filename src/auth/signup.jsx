@@ -4,7 +4,7 @@ import "./signup.css";
 import AuthIllustrationBg from "./background";
 import { toast } from "react-toastify";
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://eventsphere-backend-he6w.onrender.com/api";
 
 function SignUp() {
   const [role, setRole] = useState("participant");

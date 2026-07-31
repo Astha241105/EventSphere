@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./QuizPage.css";
 
-const BASE = "http://localhost:5000/api/quiz";
+const BASE = "https://eventsphere-backend-he6w.onrender.com/api/quiz";
 const headers = () => ({
   "Content-Type": "application/json",
   Authorization: `Bearer ${localStorage.getItem("token")}`,

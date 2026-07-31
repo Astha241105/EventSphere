@@ -13,7 +13,7 @@ const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
- const API_BASE = "http://localhost:5000/api";
+ const API_BASE = "https://eventsphere-backend-he6w.onrender.com/api";
   const handleChange = (e) => {
     setFormData({
       ...formData,

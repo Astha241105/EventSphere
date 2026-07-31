@@ -54,7 +54,7 @@ const Attendees = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:5000/api/registrations/host", {
+        const res = await fetch("https://eventsphere-backend-he6w.onrender.com/api/registrations/host", {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
@@ -82,7 +82,7 @@ const Attendees = () => {
     setSearch("");
     setSwitching(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/registrations/event/${eventId}`, {
+      const res = await fetch(`https://eventsphere-backend-he6w.onrender.com/api/registrations/event/${eventId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       if (!res.ok) throw new Error(`Server error: ${res.status}`);

@@ -130,7 +130,7 @@ const MyEvents = () => {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:5000/api/events");
+        const res = await fetch("https://eventsphere-backend-he6w.onrender.com/api/events");
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
         const data = await res.json();
 

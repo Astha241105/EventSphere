@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./QuizPage.css";
 
-const BASE = "http://localhost:5000/api/quiz";
+const BASE = "https://eventsphere-backend-he6w.onrender.com/api/quiz";
 
 export default function QuizResultsPage() {
   const { eventId } = useParams();

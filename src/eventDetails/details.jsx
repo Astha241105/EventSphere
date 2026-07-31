@@ -109,7 +109,7 @@ export default function EventDetails() {
   const fetchEvent = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/events/${id}`
+        `https://eventsphere-backend-he6w.onrender.com/api/events/${id}`
       );
 
       const data = await response.json();
@@ -160,7 +160,7 @@ export default function EventDetails() {
       <div
         className="hero2"
         style={{
-          backgroundImage: `url(http://localhost:5000${event.coverImage})`,
+          backgroundImage: `url(https://eventsphere-backend-he6w.onrender.com${event.coverImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

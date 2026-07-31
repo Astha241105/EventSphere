@@ -112,7 +112,7 @@ if (event.category === "Quiz") {
       {/* Thumbnail */}
       <div className="ec-card__thumb">
         {event.coverImage ? (
-          <img src={`http://localhost:5000${event.coverImage}`} alt={event.eventName} />
+          <img src={`https://eventsphere-backend-he6w.onrender.com${event.coverImage}`} alt={event.eventName} />
         ) : (
           <div className="ec-card__thumb-placeholder" />
         )}

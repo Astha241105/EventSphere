@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./profile.css";
 
-const BASE = "http://localhost:5000/api/profile";
+const BASE = "https://eventsphere-backend-he6w.onrender.com/api/profile";
 
 const headers = () => ({
   Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -123,7 +123,7 @@ const Profile = () => {
             <img
               src={
                 profile.avatar
-                  ? `http://localhost:5000${profile.avatar}`
+                  ? `https://eventsphere-backend-he6w.onrender.com${profile.avatar}`
                   : `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=185fa5&color=fff&size=150`
               }
               alt="avatar"

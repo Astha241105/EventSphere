@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import VideoCall from "./VideoCall";
 import "./EventVideoRoom.css";
 
-const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_BACKEND_URL || "https://eventsphere-backend-he6w.onrender.com";
 
 export default function EventVideoRoom({ eventId, eventTitle }) {
   const navigate = useNavigate();

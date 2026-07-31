@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',  // ← must match your backend port
+        target: 'https://eventsphere-backend-he6w.onrender.com',  // ← must match your backend port
         changeOrigin: true,
       }
     }
