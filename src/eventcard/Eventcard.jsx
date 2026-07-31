@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./EventCard.css";
+import "./Eventcard.css";
 
 const CATEGORY_CONFIG = {
   Seminar:  { label: "SEMINARS",  btnLabel: "Register", btnClass: "ec-card__btn--blue" },
