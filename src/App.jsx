@@ -17,7 +17,7 @@ import MyEvents from "./dashboard_for_host/myEvents";
 // import Analytics from "./dashboard_for_host/Analytics";
 import Attendees from "./dashboard_for_host/Attendees";
 import TeamPage from "./teampage/teampage.jsx";
-import SeatBookingPage from "./seatbooking/Seatbookingpage.jsx";
+// import SeatBookingPage from "./seatbooking/Seatbookingpage.jsx";
 import QuizPage from "./quiz/quizPage.jsx";
 import QuizResultsPage from "./quiz/leaderboard.jsx";
 
@@ -49,7 +49,7 @@ function App() {
       {/* <Route path="/analytics" element={<Analytics />} /> */}
       <Route path="/attendees" element={<Attendees />} />
       <Route path="/event/:eventId/team" element={<TeamPage />} />
-      <Route path="/seat-allocation/:eventId" element={<SeatBookingPage />} />
+      {/* <Route path="/seat-allocation/:eventId" element={<SeatBookingPage />} /> */}
       <Route path="/event/:eventId/room" element={<EventVideoRoom />} />
       <Route path="/event/:eventId/quiz" element={<QuizPage />} />
       <Route path="/event/:eventId/quiz-results" element={<QuizResultsPage />} />

@@ -19,7 +19,7 @@ import {
   selectError,
   selectSuccess,
   selectLastTicket,
-} from "./seatbookingslice";
+} from "./Seatbookingslice";
 import SeatMap from "./SeatMap";
 import "./Seatbookingpage.css";
 
