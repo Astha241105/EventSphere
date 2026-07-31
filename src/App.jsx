@@ -13,7 +13,7 @@ import EventVideoRoom from "./videoCall/EventVideoRoom.jsx";
 import ForgotPasswordOTP from "./auth/ForgotPasswordOTP.jsx";
 import NewPassword from "./auth/NewPassword.jsx";
 import DiscoverEvents from "./allEvents/Discoverevents.jsx";
-import MyEvents from "./dashboard_for_host/MyEvents";
+import myEvents from "./dashboard_for_host/MyEvents";
 // import Analytics from "./dashboard_for_host/Analytics";
 import Attendees from "./dashboard_for_host/Attendees";
 import TeamPage from "./teampage/teampage.jsx";
