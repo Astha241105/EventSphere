@@ -4,7 +4,7 @@ import {
   cancelBooking,
   selectSelectedSeats,
   selectMyBookings,
-} from "./seatBookingSlice";
+} from "./seatbookingslice";
 import "./SeatMap.css";
 
 const ROW_LABELS = "ABCDEFGHIJKLMNOPQRST";
